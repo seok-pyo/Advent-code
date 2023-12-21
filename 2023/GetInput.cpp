@@ -5,8 +5,8 @@
 
 int main()
 {
-    // Advent of Code 세션 쿠키 설정
-    std::string aoc_cookie = "session = MY_SESSION";
+    // Advent of Code 세션 쿠키 설정 // 쿠키 세션값에는 공백이 있으면 안된다.
+    std::string aoc_cookie = "session=";
 
     int year = 2023;
     int day = 1;
