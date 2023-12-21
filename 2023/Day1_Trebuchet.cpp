@@ -1,36 +1,60 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <cstdlib>
+#include <vector>
 
 int main()
 {
-    int ln, rn, i, sum = 0;
+    int ln, rn, i, j, sum = 0, t1, t2, cnt = 0;
     std::ifstream input_file("input.txt");
+    std::vector<std::string> output;
+
+    std::string patterns[] = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    std::string numbers[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+
     std::string line;
     while (std::getline(input_file, line))
     {
-        for (i = 0; line[i] != '\0'; i++)
+        for (i = 0; i < 9; i++)
         {
-            if (48 <= line[i] && line[i] <= 57)
+            size_t found = line.find(patterns[i]);
+            while (found != std::string::npos)
             {
-                ln = line[i] - '0';
+                line.replace(found, patterns[i].length(), numbers[i]);
+                found = line.find(patterns[i], found + 1);
+            }
+        }
+        // output.push_back(line);
+        for (j = 0; line[j] != '\0'; j++)
+        {
+            if (48 <= line[j] && line[j] <= 57)
+            {
+                ln = line[j] - '0';
                 break;
             }
         }
-        for (i = line.length() - 1; i >= 0; i--)
+        for (j = line.length() - 1; j >= 0; j--)
         {
-            if (48 <= line[i] && line[i] <= 57)
+            if (48 <= line[j] && line[j] <= 57)
             {
-                rn = line[i] - '0';
+                rn = line[j] - '0';
                 break;
             }
         }
         if (ln == rn)
-            sum += ln * 10 + ln;
+        {
+            t1 = ln * 10 + ln;
+            sum += t1;
+        }
         else
+        {
+            t2 = ln * 10 + rn;
             sum += ln * 10 + rn;
+        }
+        cnt++;
+        printf("%d %d\n", cnt, t2);
     }
+
     std::cout << sum << '\n';
 
     return 0;
