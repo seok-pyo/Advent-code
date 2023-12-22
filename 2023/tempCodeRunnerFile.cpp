@@ -1,1 +1,1 @@
-vector<int> result;
+map<string, int> m;

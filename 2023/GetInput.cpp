@@ -9,7 +9,7 @@ int main()
     std::string aoc_cookie = "session=";
 
     int year = 2023;
-    int day = 1;
+    int day = 2;
 
     std::string download_command = // curl(ClientURL)을 사용해서 파일을 다운로드 하고 input.txt 파일로 저장하는 명령어 할당
         "curl --cookie \"" + aoc_cookie + "\" https://adventofcode.com/" + std::to_string(year) +
